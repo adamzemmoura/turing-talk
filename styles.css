@@ -1,0 +1,149 @@
+body {
+    background-color: rgb(66, 195, 238);
+    padding: 50px;
+}
+
+h1 {
+    padding: 1em;
+    margin: 0;
+}
+
+input, button {
+    padding: 12px;
+}
+
+.rounded-corners {
+    border-radius: 4px;
+    outline: none;
+    border: none;
+}
+
+input:focus {
+    border: 2px gray solid;
+}
+
+.container {
+    margin: 5% 10%;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-red {
+    color: red;
+}
+
+.bg-green {
+    background-color: rgb(0, 238, 0);
+}
+
+#chat-container {
+    height: 100%;
+    width: 100%;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    min-height: 310px;
+}
+
+#chat-display {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: white;
+    border-radius: 4px 4px 0px 0px;
+    padding: 20px;
+    overflow: scroll;
+}
+
+.chat-message-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+
+.chat-message-container img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+#message-input-container {
+    height: 50px;
+    padding: 10px;
+    
+    border-radius: 0px 0px 4px 4px;
+}
+
+#message-input {
+    background-color: white;
+    height: 50px;
+    flex-grow: 1; 
+    border: none;
+    border-radius: 16px 0 0 16px;
+    outline: none;
+}
+
+#send-message-button {
+    height: 50px;
+    border: none;
+    padding: 0 20px;
+    background-color: darkblue;
+    color: white;
+    border-radius: 0 16px 16px 0;
+    outline: none;
+}
+
+#message-input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    /* background-color: green; */
+}
+
+/* CSS talk bubble */
+.speech-bubble {
+    min-width: 100px;
+    color: white;
+    padding: 0 10px;
+    max-width: 50%;
+    border-radius: 16px;
+    position: relative;
+}
+
+.bot-chat-bubble:before {
+    border-top: 15px solid transparent;
+    border-left: 20px solid green;
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 100%;
+}
+
+.speech-bubble p {
+    align-self: flex-end;
+}
+
+.bot-chat-bubble {
+    background-color: green;
+}
+
+.user-chat-bubble {
+    background-color: darkblue;
+}

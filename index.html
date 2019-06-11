@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+</head>
+<body>
+
+    <main>
+
+        <div id="chat-container" class="rounded-corners">
+            <div id="chat-display">
+                <div class="chat-message-container">
+                    <div class="speech-bubble bot-chat-bubble">
+                        <p>Hi Adam, I'm Alan... how are you today?</p>
+                    </div>
+                    <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2F68%2F41%2F40%2F684140b42a313f01da0de85af999175d.jpg&f=1" alt="">
+                </div>
+                <div class="chat-message-container">
+                    <div class="speech-bubble user-chat-bubble">
+                        <p>Hi, Alan. I'm fine thanks. How are you?</p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div id="message-input-container">
+                <form id="user-message-form">
+                    <div id="message-input-group">
+                        <input type="text" name="" id="message-input">
+                        <button id="send-message-button">
+                            <span style="color: white; font-size: 2em;">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                
+                
+                
+            </div>
+
+        </div>
+
+
+        <!-- <div id="chat-container" class="rounded-corners">
+            <div id="chat-display" style="flex-grow: 1;">
+
+            </div>
+            <div id="message-input-container" class="rounded-corners">
+                <form>
+                    <input type="text" name="" id="message-input">
+                </form>
+            </div>
+        </div> -->
+    </main>
+
+    <!-- Scripts -->
+    <script src="brain.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
