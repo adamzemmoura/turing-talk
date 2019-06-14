@@ -85,7 +85,7 @@ input:focus {
 .read-receipt {
     text-align: right;
     margin: -10 20 0 0;
-    font-size: 0.8em;
+    font-size: 0.75em;
     color: gray;
 }
 
