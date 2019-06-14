@@ -1,3 +1,6 @@
+let conversationBacklog = []
+let firstName
+
 const commonPhrasesWithResponses = {
     "how are you" : [
         "Fine thanks, for asking.",
@@ -26,6 +29,12 @@ const commonPhrasesWithResponses = {
     ]
 }
 
+const conversationStarter = [
+    "Hi, I'm Alan. What's your name?",
+    `Nice to meet you ${name}. How are you today?`,
+    "What would you like to talk about?"
+]
+
 const randomPhrases = {
 
 }
@@ -44,6 +53,11 @@ const responsesToLotsOfQuestions = [
 ]
 
 function respondToUserMessage(message) {
+
+    if (conversationBacklog.length > 0) {
+        return conversationBacklog.shift()
+    }
+
     console.log("brain is processing " + message)
     const answers = commonPhrasesWithResponses[message] 
     if (answers) {
@@ -62,4 +76,14 @@ function respondToUserMessage(message) {
 function randomAnswer(array) {
     const index = Math.floor(Math.random() * array.length)
     return array[index]
+}
+
+function startNewConversation() {
+    conversationBacklog = [...conversationStarter]
+    return conversationBacklog.shift()
+}
+
+function setName(name) {
+    firstName = name 
+    console.log("Setting name to " + firstName)
 }

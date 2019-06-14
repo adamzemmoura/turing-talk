@@ -1,25 +1,37 @@
-let name = ""
-
+let userHasGivenName = false 
 
 $(document).ready(() => {
-    $("#enterButton").click((e) => {
-        e.preventDefault()
-        name = $("#nameInput")[0].value
-        console.log(name)
-        if (name.length === 0 || name === null) {
-            displayLoginError("Please make sure you enter your name")
-        }
+    // $("#enterButton").click((e) => {
+    //     e.preventDefault()
+    //     name = $("#nameInput")[0].value
+    //     console.log(name)
+    //     if (name.length === 0 || name === null) {
+    //         displayLoginError("Please make sure you enter your name")
+    //     }
         
-    })
+    // })
 
     $("#user-message-form").on('submit', (e) => {
+        console.log("form submitted")
         e.preventDefault()
         const newMessage = $("#message-input")[0].value
+        $("#message-input")[0].value = ""
+
+        // If name is empty, assume the user is answering the first question by providing their name.
+        if (!userHasGivenName) {
+            console.log(newMessage)
+            setName(newMessage)
+            userHasGivenName = true 
+        }
+
         console.log(newMessage)
         createNewUserMessage(newMessage)
         const response = respondToUserMessage(newMessage)
-        simulateTypingDelay(response)
+        simulateReadingDelayBeforeTyping(2000, response)
     })
+    
+    const openingStatment = startNewConversation()
+    createNewBotMessage(openingStatment)
 });
 
 function displayLoginError(errorMessage) {
@@ -36,7 +48,10 @@ function createNewUserMessage(messageText) {
     `
     $(html).appendTo($("#chat-display"))
 
-    // scroll the new message into view 
+    scrollToBottom()
+}
+
+function scrollToBottom() {
     $(".chat-message-container").last()[0].scrollIntoView({
         behavior: "smooth"
     })
@@ -59,12 +74,36 @@ function createNewBotMessage(messageText) {
     })
 }
 
+function simulateReadingDelayBeforeTyping(delay, response) {
+    setTimeout(() => {
+        simulateTypingDelay(response)
+    }, delay)
+}
+
 function simulateTypingDelay(response) {
+    showTypingIndicator(true)
     const wordCount = response.split(' ').length
     console.log(wordCount)
     const millisecondOfDelay = (wordCount / (150 / 60)) * 1000 // simulate 100 words per minute 
     console.log(millisecondOfDelay)
     setTimeout(() => {
+        showTypingIndicator(false)
         createNewBotMessage(response)
     }, millisecondOfDelay)
+}
+
+function showTypingIndicator(bool) {
+    const typingIndicator = `
+    <div id="typing-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    `
+    if (bool) {
+        $(typingIndicator).appendTo($('#chat-display'))
+        scrollToBottom()
+    } else {
+        $('#typing-indicator').remove()
+    }
 }
