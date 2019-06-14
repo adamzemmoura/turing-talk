@@ -82,6 +82,13 @@ input:focus {
     border-radius: 50%;
 }
 
+.read-receipt {
+    text-align: right;
+    margin: -10 20 0 0;
+    font-size: 0.8em;
+    color: gray;
+}
+
 #message-input-container {
     height: 50px;
     padding: 10px;
@@ -161,18 +168,6 @@ input:focus {
     /* position: relative; */
     animation: 2s pulse infinite ease-out;
 }
-
-#typing-indicator::before,
-#typing-indicator::after {
-     content: '';
-     position: absolute;
-     bottom: -11px;
-     left: -11px;
-     height: 20px;
-     width: 20px;
-     border-radius: 50%;
-     background-color: #F5F5F5;
- }
 
  #typing-indicator span {
     height: 15px;

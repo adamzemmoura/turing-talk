@@ -1,16 +1,6 @@
 let userHasGivenName = false 
 
 $(document).ready(() => {
-    // $("#enterButton").click((e) => {
-    //     e.preventDefault()
-    //     name = $("#nameInput")[0].value
-    //     console.log(name)
-    //     if (name.length === 0 || name === null) {
-    //         displayLoginError("Please make sure you enter your name")
-    //     }
-        
-    // })
-
     $("#user-message-form").on('submit', (e) => {
         console.log("form submitted")
         e.preventDefault()
@@ -33,10 +23,6 @@ $(document).ready(() => {
     const openingStatment = startNewConversation()
     createNewBotMessage(openingStatment)
 });
-
-function displayLoginError(errorMessage) {
-    $("#errorMessage")[0].innerText = errorMessage
-}
 
 function createNewUserMessage(messageText) {
     const html = `
@@ -76,8 +62,14 @@ function createNewBotMessage(messageText) {
 
 function simulateReadingDelayBeforeTyping(delay, response) {
     setTimeout(() => {
+        addReadReceipt()
         simulateTypingDelay(response)
     }, delay)
+}
+
+function addReadReceipt() {
+    const readReceiptHTML = `<p class='read-receipt'>Read ${getCurrentTimeString()}</p>`
+    $(readReceiptHTML).appendTo($('#chat-display'))
 }
 
 function simulateTypingDelay(response) {
@@ -106,4 +98,13 @@ function showTypingIndicator(bool) {
     } else {
         $('#typing-indicator').remove()
     }
+}
+
+function getCurrentTimeString() {
+    const now = new Date()
+    const hours = now.getHours()
+    const minutes = now.getMinutes()
+    let hoursString = (hours < 10) ? `0${hours}` : hours
+    let minsString = (minutes < 10) ? `0${minutes}` : minutes
+    return hoursString + ":" + minsString
 }
