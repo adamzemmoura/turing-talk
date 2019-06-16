@@ -1,18 +1,16 @@
-let userHasGivenName = false 
-
 $(document).ready(() => {
     $("#user-message-form").on('submit', (e) => {
-        console.log("form submitted")
+        
         e.preventDefault()
         const newMessage = $("#message-input")[0].value
         $("#message-input")[0].value = ""
 
         // If name is empty, assume the user is answering the first question by providing their name.
-        if (!userHasGivenName) {
-            console.log(newMessage)
-            setName(newMessage)
-            userHasGivenName = true 
-        }
+        // if (!userHasGivenName) {
+        //     console.log(newMessage)
+        //     setName(newMessage)
+        //     userHasGivenName = true 
+        // }
 
         console.log(newMessage)
         createNewUserMessage(newMessage)
@@ -22,6 +20,7 @@ $(document).ready(() => {
     
     const openingStatment = startNewConversation()
     createNewBotMessage(openingStatment)
+    $('#message-input').focus()
 });
 
 /*** 
@@ -73,7 +72,7 @@ function createNewBotMessage(messageText) {
             <div class="speech-bubble bot-chat-bubble">
                 <p>${messageText}</p>
             </div>
-            <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2F68%2F41%2F40%2F684140b42a313f01da0de85af999175d.jpg&f=1" alt="">
+            <img src="assets/AlanTuring.jpg" alt="image of Alan Turing">
         </div>
     `
     $(html).appendTo($("#chat-display"))
@@ -116,9 +115,7 @@ function simulateTypingDelay(message) {
     const wordsPerMinute = 150
     showTypingIndicator(true)
     const wordCount = message.split(' ').length
-    console.log(wordCount)
     const millisecondOfDelay = (wordCount / (wordsPerMinute / 60)) * 1000 // simulate 100 words per minute 
-    console.log(millisecondOfDelay)
     setTimeout(() => {
         showTypingIndicator(false)
         createNewBotMessage(message)
