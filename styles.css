@@ -72,7 +72,8 @@ input:focus {
     background-color: white;
     border-radius: 4px 4px 0px 0px;
     padding: 20px;
-    overflow: scroll;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .chat-message-container {
