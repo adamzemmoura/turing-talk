@@ -4,15 +4,6 @@ $(document).ready(() => {
         e.preventDefault()
         const newMessage = $("#message-input")[0].value
         $("#message-input")[0].value = ""
-
-        // If name is empty, assume the user is answering the first question by providing their name.
-        // if (!userHasGivenName) {
-        //     console.log(newMessage)
-        //     setName(newMessage)
-        //     userHasGivenName = true 
-        // }
-
-        console.log(newMessage)
         createNewUserMessage(newMessage)
         const response = respondToUserMessage(newMessage)
         simulateReadingDelayBeforeTyping(2000, response)
